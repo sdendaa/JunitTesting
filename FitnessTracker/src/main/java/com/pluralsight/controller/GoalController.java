@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.pluralsight.model.Goal;
 
+/*
+this controller class
+*/
 @Controller
 @SessionAttributes("goal")
 public class GoalController {
@@ -25,13 +28,12 @@ public class GoalController {
 	}
 
 	@RequestMapping(value = "addGoal", method = RequestMethod.POST)
-	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, 
-			BindingResult result) {
+	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, BindingResult result) {
 		System.out.println("result has error " + result.hasErrors());
 		System.out.println("Minutes updated:" + goal.getMinutes());
-		
-		if(result.hasErrors()){
-			return"addGoal";
+
+		if (result.hasErrors()) {
+			return "addGoal";
 		}
 
 		return "redirect:addMinutes.html";
